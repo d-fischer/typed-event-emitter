@@ -1,6 +1,10 @@
 {
-  "name": "typed-event-emitter",
-  "version": "1.1.0",
+  "name": "@d-fischer/typed-event-emitter",
+  "version": "2.0.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Alternative event emitter for JavaScript and TypeScript.",
   "main": "index.js",
   "scripts": {
@@ -15,11 +19,10 @@
     "event",
     "emitter"
   ],
-  "author": "Simon \"Tenry\" Burchert",
-  "homepage": "https://github.com/tenry92/typed-event-emitter",
+  "author": "Daniel Fischer <daniel@d-fischer.dev>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tenry92/typed-event-emitter.git"
+    "url": "https://github.com/d-fischer/typed-event-emitter.git"
   },
   "license": "MIT",
   "devDependencies": {
