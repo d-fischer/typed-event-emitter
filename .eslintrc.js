@@ -1,3 +1,14 @@
 module.exports = {
-	extends: '@d-fischer'
+	extends: '@d-fischer',
+
+	rules: {
+		'@typescript-eslint/no-explicit-any': 'off',
+		'prefer-rest-params': 'off',
+		'jsdoc/check-tag-names': [
+			'error',
+			{
+				definedTags: ['inheritDoc', 'expandParams', 'hideProtected', 'eventListener', 'typeparam']
+			}
+		],
+	}
 };
