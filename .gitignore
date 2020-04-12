@@ -1,8 +1,10 @@
 *.log
 npm-debug.log*
-node_modules
-.npm
-*.d.ts
-*.js
-*.map
-.idea
+yarn-debug.log*
+yarn-error.log*
+node_modules/
+*.tgz
+/.idea
+/lib
+/es
+package-lock.json

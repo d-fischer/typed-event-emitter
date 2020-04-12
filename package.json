@@ -1,15 +1,7 @@
 {
   "name": "@d-fischer/typed-event-emitter",
   "version": "2.0.0",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "description": "Alternative event emitter for JavaScript and TypeScript.",
-  "main": "index.js",
-  "scripts": {
-    "prepare": "tsc"
-  },
   "keywords": [
     "event-emitter",
     "events",
@@ -19,18 +11,60 @@
     "event",
     "emitter"
   ],
+  "main": "lib",
+  "types": "lib",
+  "module": "es",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./es/index.mjs"
+    }
+  },
+  "sideEffects": false,
   "author": "Daniel Fischer <daniel@d-fischer.dev>",
   "repository": {
     "type": "git",
     "url": "https://github.com/d-fischer/typed-event-emitter.git"
   },
   "license": "MIT",
+  "dependencies": {
+    "@types/node": "^13.11.1",
+    "tslib": "^1.11.1"
+  },
   "devDependencies": {
-    "typescript": ">=3.0"
+    "@d-fischer/eslint-config": "^1.0.3",
+    "eslint": "^6.7.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "ts-hybrid-esm-build": "^0.2.1"
   },
   "files": [
-    "index.js",
-    "index.d.ts",
-    "README.md"
-  ]
+    "LICENSE",
+    "README.md",
+    "lib",
+    "es"
+  ],
+  "scripts": {
+    "lint": "eslint --ext ts src",
+    "prettier:check": "prettier --check 'src/**'",
+    "prettier:fix": "prettier --write 'src/**'",
+    "build": "ts-hybrid-esm-build",
+    "rebuild": "ts-hybrid-esm-build --clean"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,json}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
 }

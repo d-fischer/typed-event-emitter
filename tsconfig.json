@@ -1,14 +1,23 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "lib": ["es2015"],
-    "noImplicitAny": false,
-    "outDir": ".",
-    "sourceMap": true,
-    "declaration": true
-  },
-  "files": [
-    "index.ts"
-  ]
+	"compilerOptions": {
+		"rootDir": "src",
+		"outDir": "lib",
+		"module": "commonjs",
+		"target": "es5",
+		"lib": ["esnext"],
+		"sourceMap": true,
+		"moduleResolution": "node",
+		"declaration": true,
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitReturns": true,
+		"importHelpers": true,
+		"strict": true,
+		"strictFunctionTypes": false,
+		"strictPropertyInitialization": false,
+		"suppressImplicitAnyIndexErrors": true,
+		"noUnusedLocals": true,
+		"experimentalDecorators": true,
+		"downlevelIteration": true
+	},
+	"exclude": ["node_modules", "lib", "es"]
 }
