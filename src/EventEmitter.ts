@@ -39,10 +39,14 @@ export class EventEmitter {
 			const listener = arguments[1] as Function;
 
 			if (this.eventListeners.has(event)) {
-				const listeners = this.eventListeners.get(event)!;
-				let idx = 0;
-				while (!listener || (idx = listeners.indexOf(listener)) !== -1) {
-					listeners.splice(idx, 1);
+				if (listener) {
+					const listeners = this.eventListeners.get(event)!;
+					let idx = 0;
+					while ((idx = listeners.indexOf(listener)) !== -1) {
+						listeners.splice(idx, 1);
+					}
+				} else {
+					this.eventListeners.delete(event);
 				}
 			}
 		}
