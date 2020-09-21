@@ -22,22 +22,24 @@
   },
   "sideEffects": false,
   "author": "Daniel Fischer <daniel@d-fischer.dev>",
+  "funding": "https://github.com/sponsors/d-fischer",
   "repository": {
     "type": "git",
     "url": "https://github.com/d-fischer/typed-event-emitter.git"
   },
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^13.11.1",
-    "tslib": "^1.11.1"
+    "@types/node": "^14.11.1",
+    "tslib": "^2.0.1"
   },
   "devDependencies": {
-    "@d-fischer/eslint-config": "^1.0.3",
-    "eslint": "^6.7.1",
-    "husky": "^3.1.0",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1",
-    "ts-hybrid-esm-build": "^0.2.1"
+    "@d-fischer/eslint-config": "^2.0.6",
+    "eslint": "^7.9.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "tsukuru": "^0.5.0",
+    "typescript": "~4.0.2"
   },
   "files": [
     "LICENSE",
@@ -49,8 +51,8 @@
     "lint": "eslint --ext ts src",
     "prettier:check": "prettier --check 'src/**'",
     "prettier:fix": "prettier --write 'src/**'",
-    "build": "ts-hybrid-esm-build",
-    "rebuild": "ts-hybrid-esm-build --clean"
+    "build": "tsukuru",
+    "rebuild": "tsukuru --clean"
   },
   "husky": {
     "hooks": {
