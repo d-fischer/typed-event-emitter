@@ -28,15 +28,14 @@ export class EventEmitter {
 	removeListener(id: Listener): void;
 	removeListener(event: Function, listener?: Function): void;
 
-	removeListener() {
-		if (arguments.length === 0) {
+	removeListener(idOrEvent?: Listener | Function, listener?: Function) {
+		if (!idOrEvent) {
 			this.eventListeners.clear();
-		} else if (arguments.length === 1 && typeof arguments[0] === 'object') {
-			const id = arguments[0];
+		} else if (typeof idOrEvent === 'object') {
+			const id = idOrEvent;
 			this.removeListener(id.event, id.listener);
-		} else if (arguments.length >= 1) {
-			const event = arguments[0] as Function;
-			const listener = arguments[1] as Function;
+		} else {
+			const event = idOrEvent;
 
 			if (this.eventListeners.has(event)) {
 				if (listener) {
