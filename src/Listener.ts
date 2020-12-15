@@ -4,10 +4,15 @@ export class Listener {
 	constructor(
 		public readonly owner: EventEmitter,
 		public readonly event: Function,
-		public readonly listener: Function
+		public readonly listener: Function,
+		private readonly _internal = false
 	) {}
 
 	unbind(): void {
-		this.owner.removeListener(this);
+		if (this._internal) {
+			this.owner.removeInternalListener(this);
+		} else {
+			this.owner.removeListener(this);
+		}
 	}
 }

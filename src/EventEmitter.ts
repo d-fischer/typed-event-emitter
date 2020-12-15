@@ -27,6 +27,12 @@ export class EventEmitter {
 		return eventBinder;
 	}
 
+	/** @internal */ removeInternalListener(id: Listener): void;
+	/** @internal */ removeInternalListener(event?: Function, listener?: Function): void;
+	/** @internal */ removeInternalListener(idOrEvent?: Listener | Function, listener?: Function): void {
+		this._removeListener(true, idOrEvent, listener);
+	}
+
 	protected emit<Args extends any[]>(event: EventBinder<Args>, ...args: Args): void {
 		if (this._eventListeners.has(event)) {
 			for (const listener of this._eventListeners.get(event)!) {
@@ -48,12 +54,6 @@ export class EventEmitter {
 		return this._addListener(true, event, listener);
 	}
 
-	protected removeInternalListener(id: Listener): void;
-	protected removeInternalListener(event?: Function, listener?: Function): void;
-	protected removeInternalListener(idOrEvent?: Listener | Function, listener?: Function): void {
-		this._removeListener(true, idOrEvent, listener);
-	}
-
 	private _addListener<Args extends any[]>(
 		internal: boolean,
 		event: EventBinder<Args>,
@@ -66,7 +66,7 @@ export class EventEmitter {
 			listenerMap.set(event, [listener]);
 		}
 
-		return new Listener(this, event, listener);
+		return new Listener(this, event, listener, internal);
 	}
 
 	private _removeListener(internal: boolean, idOrEvent?: Listener | Function, listener?: Function): void {
