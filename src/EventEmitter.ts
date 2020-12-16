@@ -39,6 +39,11 @@ export class EventEmitter {
 				listener(...args);
 			}
 		}
+		if (this._internalEventListeners.has(event)) {
+			for (const listener of this._internalEventListeners.get(event)!) {
+				listener(...args);
+			}
+		}
 	}
 
 	protected registerInternalEvent<T extends any[]>(): EventBinder<T> {
