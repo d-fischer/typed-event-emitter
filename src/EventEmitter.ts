@@ -27,9 +27,9 @@ export class EventEmitter {
 		return eventBinder;
 	}
 
-	/** @internal */ removeInternalListener(id: Listener): void;
-	/** @internal */ removeInternalListener(event?: Function, listener?: Function): void;
-	/** @internal */ removeInternalListener(idOrEvent?: Listener | Function, listener?: Function): void {
+	/** @protected */ removeInternalListener(id: Listener): void;
+	/** @protected */ removeInternalListener(event?: Function, listener?: Function): void;
+	/** @protected */ removeInternalListener(idOrEvent?: Listener | Function, listener?: Function): void {
 		this._removeListener(true, idOrEvent, listener);
 	}
 
