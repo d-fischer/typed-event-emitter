@@ -1,6 +1,6 @@
 {
   "name": "@d-fischer/typed-event-emitter",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Alternative event emitter for JavaScript and TypeScript.",
   "keywords": [
     "event-emitter",
