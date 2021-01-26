@@ -1,4 +1,4 @@
-# typed-event-emitter
+# @d-fischer/typed-event-emitter
 
 This module provides an alternative API than the well known event emitting
 interfaces used in the browser (DOM) or node.js. Instead of accepting arbitrary
