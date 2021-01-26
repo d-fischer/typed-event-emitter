@@ -11,7 +11,7 @@ little bit, ensuring already at binding time that the events actually exists.
 
 Via npm:
 
-    $ npm install typed-event-emitter
+    $ npm install @d-fischer/typed-event-emitter
 
 
 ## Usage
@@ -19,10 +19,10 @@ Via npm:
 Take a look at the following snippet (TypeScript):
 
 ~~~TypeScript
-import { EventEmitter } from 'typed-event-emitter';
+import { EventEmitter } from '@d-fischer/typed-event-emitter';
 
 class MyClass extends EventEmitter {
-  onValueChanged = this.registerEvent<(newValue: number) => any>();
+  onValueChanged = this.registerEvent<[newValue: number]>();
   
   private _value: number;
   
@@ -58,13 +58,13 @@ make sure to call `super()`.
 Any events, your class shall be able to emit, must be registered in the form:
 
 ~~~TypeScript
-onFooBar = this.registerEvent<callbackType>();
+onFooBar = this.registerEvent<[...argTypes]>();
 ~~~
 
 Where `onFooBar` can be any name (it doesn't need to begin with *on*) and
-`callbackType` must be the type of the function the listeners must have. With
-this, you can see the signature your function must have when you're about to
-bind a listener to that event.
+`argTypes` must be the a tuple representing the arguments of the function the
+listeners must have. With this, you can see the signature your function must
+have when you're about to bind a listener to that event.
 
 To fire/emit an event (only possible from within your event emitter), you have
 to call `this.emit(this.onFooBar, ...)`, where `this.onFooBar` is the event to
@@ -78,7 +78,7 @@ and inheritance in order to work correctly. The code shown above can also be
 written in JavaScript (node.js):
 
 ~~~JavaScript
-const EventEmitter = require('typed-event-emitter').EventEmitter;
+const EventEmitter = require('@d-fischer/typed-event-emitter').EventEmitter;
 
 class MyClass extends EventEmitter {
   constructor(value) {
